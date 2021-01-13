@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">shkolo</string>
+    <string name="facebook_app_id">754551512133667</string> 
+    <string name="fb_login_protocol_scheme">fb754551512133667</string>
+</resources>
