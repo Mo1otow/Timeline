@@ -17,8 +17,8 @@ export default function DataList() {
 
         setLoading(true)
 
-        let intervalId = setInterval(() => {
-            database()
+        let intervalId = setInterval(async () => {
+            await database()
                 .ref('/items')
                 .once('value')
                 .then(snapshot => {
@@ -30,6 +30,7 @@ export default function DataList() {
                             ...rawData[key]
                         })
                     }
+                    readyData = readyData.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
                     if (readyData !== data) {
                         setData(readyData)
                     }

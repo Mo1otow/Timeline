@@ -40,13 +40,14 @@ export default function Home() {
             </Modal>
             <FAB style={{
                 position: 'absolute',
+                zIndex: 999,
                 bottom: 30,
                 right: 30
             }}
                 icon="plus"
                 onPress={() => modalAddItemRef.current.show()} />
             <Modal ref={modalAddItemRef} >
-                <AddItem />
+                <AddItem callback={() => modalAddItemRef.current.hide()} />
             </Modal>
 
             <DataList />

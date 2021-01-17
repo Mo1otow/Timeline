@@ -5,7 +5,7 @@ import { AccessToken } from 'react-native-fbsdk'
 import moment from 'moment'
 import database from '@react-native-firebase/database';
 
-export default function AddItem() {
+export default function AddItem({callback}) {
 
     const [item, setItem] = React.useState({})
 
@@ -31,6 +31,9 @@ export default function AddItem() {
         database().ref(`/items/${moment().format('MM-DD-YYYY-hh:mm:ss')}-${user.id}`)
             .set(value).then(() => {
                 alert('You have added data successfully')
+                if(callback){
+                    callback()
+                }
                 setLoading(false)
             })
             .catch(e => console.log('ErrorFBRD : ', e))
